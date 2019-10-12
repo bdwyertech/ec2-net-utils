@@ -15,6 +15,9 @@ BindsTo=sys-subsystem-net-devices-%i.device
 
 #We don't want to run if it already being managed by network.service
 ConditionPathExists=!/var/run/dhclient-%i.pid
+# Also do not want to run if CNI is enabled
+ConditionPathExists=!/etc/cni/net.d
+
 
 [Service]
 RemainAfterExit=true
